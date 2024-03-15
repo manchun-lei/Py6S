@@ -155,14 +155,15 @@ class Outputs(object):
         extractors = {"6SV version": (CURRENT, 2, "version", str),
                       "month": (CURRENT, 1, "month", self.to_int),
                       "day": (CURRENT, 4, "day", self.to_int),
-                      "solar zenith angle": (CURRENT, 3, "solar_z", self.to_int),
-                      "solar azimuthal angle": (CURRENT, 8, "solar_a", self.to_int),
-                      "view zenith angle": (CURRENT, 3, "view_z", self.to_int),
-                      "view azimuthal angle": (CURRENT, 8, "view_a", self.to_int),
+                      "solar zenith angle": (CURRENT, 3, "solar_z", float),
+                      "solar azimuthal angle": (CURRENT, 8, "solar_a", float),
+                      "view zenith angle": (CURRENT, 3, "view_z", float),
+                      "view azimuthal angle": (CURRENT, 8, "view_a", float),
                       "scattering angle": (CURRENT, 2, "scattering_angle", float),
                       "azimuthal angle difference": (CURRENT, 7, "azimuthal_angle_difference", float),
                       "optical condition identity": (1, WHOLE_LINE, "visibility", self.extract_vis),
                       "optical condition": (1, WHOLE_LINE, "aot550", self.extract_aot),
+                      "constant reflectance over the spectra": (CURRENT, 5, "ground_reflectance", float), #M.LEI
                       "ground pressure": (CURRENT, 3, "ground_pressure", float),
                       "ground altitude": (CURRENT, 3, "ground_altitude", float),
 
@@ -187,7 +188,6 @@ class Outputs(object):
                       "rad at satel. level (w/m2/": (2, 1, "background_radiance", float),
                       "rad at satel. level (w/m2/sr/mic)": (2, 2, "pixel_radiance", float),
                       "sol. spect (in w/m2/mic)": (1, 0, "solar_spectrum", float),
-
 
                       "measured radiance [w/m2/sr/mic]": (CURRENT, 4, "measured_radiance", float),
                       "atmospherically corrected reflectance": (1, 3, "atmos_corrected_reflectance_lambertian", float),
@@ -289,6 +289,7 @@ class Outputs(object):
             "spherical albedo   :": "spherical_albedo",
             "optical depth total:": "optical_depth_total",
             "optical depth plane:": "optical_depth_plane",
+            "reflectance        :": "reflectance", #M.LEI
             "reflectance I      :": "reflectance_I",
             "reflectance Q      :": "reflectance_Q",
             "reflectance U      :": "reflectance_U",
@@ -368,7 +369,10 @@ class Outputs(object):
 
         """
         with open(filename, "w") as f:
-            f.write(self.fulltext)
+            #f.write(self.fulltext)
+            lines = self.fulltext.splitlines()
+            for line in lines:
+                f.write(line+'\n')
 
 
 class Transmittance(object):
