@@ -1,5 +1,0 @@
-numpy
-scipy
-pysolar>=0.9
-python-dateutil
-.
