@@ -163,6 +163,7 @@ class Outputs(object):
                       "azimuthal angle difference": (CURRENT, 7, "azimuthal_angle_difference", float),
                       "optical condition identity": (1, WHOLE_LINE, "visibility", self.extract_vis),
                       "optical condition": (1, WHOLE_LINE, "aot550", self.extract_aot),
+                      "monochromatic reflectance": (CURRENT, 2, "ground_reflectance", float), #M.LEI
                       "constant reflectance over the spectra": (CURRENT, 5, "ground_reflectance", float), #M.LEI
                       "ground pressure": (CURRENT, 3, "ground_pressure", float),
                       "ground altitude": (CURRENT, 3, "ground_altitude", float),

@@ -33,7 +33,10 @@ class SixSPlus(SixS):
         outputs['ground_pressure'] = self.outputs.values['ground_pressure']
         outputs['ground_alt'] = self.outputs.values['ground_altitude']
         # toa intrinsic solar irradiance (w/m2/um)
-        outputs['F0'] = self.outputs.values['int_solar_spectrum']/self.outputs.values['int_funct_filt']
+        if 'int_solar_spectrum' in self.outputs.values:
+            outputs['F0'] = self.outputs.values['int_solar_spectrum']/self.outputs.values['int_funct_filt']
+        else:
+            outputs['F0'] = self.outputs.values['solar_spectrum']
         # toa radiance - total (w/m2/um/sr)
         outputs['toa_rad'] = self.outputs.values['apparent_radiance']
         # toa reflectance - total, atm, obj, env
