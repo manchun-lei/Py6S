@@ -18,6 +18,5 @@ CHL
 *.mie
 *.png
 .ropeproject
-*.ipynb
 .coverage
 /MyTests
