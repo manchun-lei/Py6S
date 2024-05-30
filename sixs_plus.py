@@ -14,8 +14,13 @@ sys.path.append(r'D:\Py6S')
 from Py6S import *
 
 class SixSPlus(SixS):
-    def __init__(self,path=None):
+    def __init__(self,path=None,outfile=None):
         super().__init__(path)
+        if outfile is not None:
+            f = open(outfile,"rb")
+            lines = f.read()
+            f.close()
+            self.outputs = Outputs(lines,'')
         
     def outs(self):
         outputs = {}
@@ -27,8 +32,9 @@ class SixSPlus(SixS):
         outputs['raa'] = self.outputs.values['azimuthal_angle_difference']
         outputs['scattering_angle'] = self.outputs.values['scattering_angle']
         # atmos profil param
-        outputs['vis'] = self.outputs.values['visibility']
-        outputs['aot550'] = self.outputs.values['aot550']
+        if 'visibility' in self.outputs.values:
+            outputs['vis'] = self.outputs.values['visibility']
+            outputs['aot550'] = self.outputs.values['aot550']
         # ground param
         outputs['ground_pressure'] = self.outputs.values['ground_pressure']
         outputs['ground_alt'] = self.outputs.values['ground_altitude']
