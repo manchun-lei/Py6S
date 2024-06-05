@@ -8,9 +8,15 @@ I want add some extension fontion to the class SixS,
 so I create a class SixSPlus here as a Child class of SixS.
 
 """
+import os
 import numpy as np
+import datetime
 import sys
-sys.path.append(r'D:\Py6S')
+current_dir = os.path.dirname(os.path.abspath(__file__))
+py6s_path = os.path.join(current_dir, 'Py6S')
+if py6s_path not in sys.path:
+    sys.path.append(py6s_path)
+
 from Py6S import *
 
 class SixSPlus(SixS):
