@@ -5,12 +5,14 @@
 Calculate the solar-earth distance coefficient R
 from date or from day-of-year (doy)
 
-F0 of a specifical date/doy = F0_sc * R
+The extraterrestrial solar irradiance F0 of a specifical date/doy = F0_sc * R
 
-R0_sc is the extraterrestrial solar irradiance at R=1
+F0_sc is the extraterrestrial solar irradiance constant, with R=1 
 
 Usually month=4,day=4 (doy=94) is the closest date/doy for R=1
 
+2000 ASTM Standard Extraterrestrial Spectrum Reference E-490-00 is recommended as F0_sc spectrum.
+Otherwise, an atmospheric radiative transfer code such as 6S can be used to simulate the F0.
 """
 import numpy as np
 import datetime

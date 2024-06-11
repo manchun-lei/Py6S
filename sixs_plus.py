@@ -10,7 +10,6 @@ so I create a class SixSPlus here as a Child class of SixS.
 """
 import os
 import numpy as np
-import datetime
 import sys
 current_dir = os.path.dirname(os.path.abspath(__file__))
 py6s_path = os.path.join(current_dir, 'Py6S')
